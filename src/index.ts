@@ -1,20 +1,21 @@
 import "dotenv/config";
 import { initializeDataSource } from "./config/data-source";
 import { bot } from "./config/bot";
+import { initializeBotHandlers } from "./services/botService";
+// import { Bot } from "grammy";
 
 
 
 const startServer = async () => {
+    let userId:number|undefined;
     await initializeDataSource();
 
-    // Handle the /start command.
-    bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
-    // Handle other messages.
-    bot.on("message", (ctx) => ctx.reply("Got another message!"));
+    // Initialize bot handlers
+    initializeBotHandlers();
 
-
-    // Start the bot.
+    // Start the bot
     bot.start();
+    console.log("Bot is up and running!");
 
   };
 
