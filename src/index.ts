@@ -1,18 +1,22 @@
-import { Bot } from "grammy";
 import "dotenv/config";
-
-
-// Bot instance
-const bot = new Bot(process.env.BOT_TOKEN ?? "botToken");
+import { initializeDataSource } from "./config/data-source";
+import { bot } from "./config/bot";
 
 
 
-// Handle the /start command.
-bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
-// Handle other messages.
-bot.on("message", (ctx) => ctx.reply("Got another message!"));
+const startServer = async () => {
+    await initializeDataSource();
+
+    // Handle the /start command.
+    bot.command("start", (ctx) => ctx.reply("Welcome! Up and running."));
+    // Handle other messages.
+    bot.on("message", (ctx) => ctx.reply("Got another message!"));
 
 
-// Start the bot.
-bot.start();
+    // Start the bot.
+    bot.start();
 
+  };
+
+
+startServer();
