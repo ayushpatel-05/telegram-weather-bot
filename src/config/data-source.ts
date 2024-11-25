@@ -1,6 +1,7 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
-import { Client } from "pg";
+import pg from "pg";
+import "dotenv/config"
 
 export const AppDataSource = new DataSource({
   type: "postgres",
@@ -19,7 +20,7 @@ export const AppDataSource = new DataSource({
 
 // Create database if it doesn't exist.
 async function ensureDatabaseExists() {
-  const client = new Client({
+  const client = new pg.Client({
     host: process.env.DB_HOST,
     port: parseInt(process.env.DB_PORT || "5432"),
     user: process.env.DB_USERNAME,
@@ -61,3 +62,11 @@ export const initializeDataSource = async () => {
     process.exit(1); // Exit the app if the database connection fails.
   }
 };
+
+//Set type property as module in package.json before running and then remove it after running(Find why later)
+//Generate Migration
+//npm run typeorm -- migration:generate ./src/migration/user-table -d ./src/config/data-source.ts
+
+//Run Migration
+//npm run typeorm -- migration:run -d ./src/config/data-source.ts
+
