@@ -1,8 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
 @Entity()
 export class User {
-  @PrimaryGeneratedColumn()
+  @PrimaryGeneratedColumn("uuid")
   id!: number;
 
   @Column()
@@ -12,7 +12,16 @@ export class User {
   lastName!: string;
 
   @Column()
-  age!: number;
+  userName!: string;
+
+  @Column()
+  isActive!: boolean;
+
+  @CreateDateColumn()
+  createdAt!: Date;
+
+  @UpdateDateColumn()
+  updatedAt!: Date;
 }
 
 //Why "!""

@@ -9,7 +9,7 @@ export const AppDataSource = new DataSource({
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
   database: "telegram-weather-bot",
-  synchronize: true, // Automatically syncs schema; avoid in production.
+  synchronize: false,
   logging: false,
   entities: ["src/entity/*.ts"], // Path to entities.
   migrations: ["src/migration/*.ts"], // Path to migrations.
