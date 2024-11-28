@@ -1,12 +1,13 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn, ManyToOne } from "typeorm";
+import { User } from "./User";
 
 @Entity('Subscriptions')
 export class Subscription {
     @PrimaryGeneratedColumn('uuid')
     id!: string;
 
-    @Column()
-    userId!: string;
+    // @Column()
+    // userId!: string;
 
     @Column()
     location!: string;
@@ -23,4 +24,7 @@ export class Subscription {
 
     @UpdateDateColumn()
     updatedAt!: Date;
+    
+    @ManyToOne(() => User)
+    user!: User;
 }
