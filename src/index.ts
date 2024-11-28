@@ -1,7 +1,8 @@
+import "reflect-metadata";
 import "dotenv/config";
-import { initializeDataSource } from "./config/data-source";
-import { bot } from "./config/bot";
-import { initializeBotHandlers } from "./services/botService";
+import { initializeDataSource } from "./config/data-source.js";
+import { bot } from "./config/bot.js";
+import { initializeBotHandlers } from "./services/botService.js";
 // import { Bot } from "grammy";
 
 

@@ -1,4 +1,4 @@
-import { bot } from "../config/bot";
+import { bot } from "../config/bot.js";
 
 // Handles the /start command
 const handleStartCommand = () => {

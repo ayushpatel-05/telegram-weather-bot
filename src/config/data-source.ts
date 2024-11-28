@@ -1,20 +1,34 @@
 import "reflect-metadata";
 import { DataSource } from "typeorm";
 import pg from "pg";
+import path from 'path';
 import "dotenv/config"
+import { fileURLToPath } from "url";
 
+// const currentDir = import.meta.dirname;
+// const parentDir = path.dirname(currentDir);
+
+// console.log(parentDir);
+// const __filename = fileURLToPath(import.meta.url);
+// const __dirname = path.dirname(__filename);
+// console.log(__dirname)
 export const AppDataSource = new DataSource({
   type: "postgres",
   host: "localhost",
   port: 5432,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: "telegram-weather-bot",
+  // database: "telegram-weather-bot-2",
+  database: process.env.DB_NAME,
   synchronize: false,
-  logging: false,
+  logging: ["info", "log", "error", "query", "schema", "migration", "warn"],
+  // entities: [`${process.env.NODE_ENV == "production" ? "built" : "src"}/entity/*.{ts, js}`], // Path to entities.
+  // migrations: [`${process.env.NODE_ENV == "production" ? "built" : "src"}/migration/*.{ts, js}`], // Path to migrations.
+  // subscribers: [`${process.env.NODE_ENV == "production" ? "built" : "src"}/subscriber/*.{ts, js}`], // Path to subscribers.
   entities: ["src/entity/*.ts"], // Path to entities.
   migrations: ["src/migration/*.ts"], // Path to migrations.
   subscribers: ["src/subscriber/*.ts"], // Path to subscribers.
+
 });
 
 
@@ -70,3 +84,6 @@ export const initializeDataSource = async () => {
 //Run Migration
 //npm run typeorm -- migration:run -d ./src/config/data-source.ts
 
+// "migration:generate": "npx typeorm-ts-node-esm migration:generate ./src/migration/$npm_config_name -d ./src/config/data-source.ts",
+// "migration:run": "npx typeorm-ts-node-esm migration:run -d ./src/config/data-source.ts",
+// "migration:revert": "npx typeorm-ts-node-esm migration:revert -d ./src/config/data-source.ts",

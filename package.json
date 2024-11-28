@@ -3,11 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.ts",
+  "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npx ts-node src/index.ts",
-    "dev": "nodemon src/index.ts",
+    "start": "npx tsx src/index.ts",
+    "dev": "nodemon",
     "build": "npx tsc",
+    "migration:generate": "npx typeorm-ts-node-esm migration:generate ./src/migration/%npm_config_migrationName% -d ./src/config/data-source.ts",
+    "migration:run": "npx typeorm-ts-node-esm migration:run -d ./src/config/data-source.ts",
+    "migration:revert": "npx typeorm-ts-node-esm migration:revert -d ./src/config/data-source.ts",
     "typeorm": "typeorm-ts-node-esm"
   },
   "author": "",
@@ -17,6 +21,7 @@
     "grammy": "^1.32.0",
     "pg": "^8.13.1",
     "reflect-metadata": "^0.2.2",
+    "tsx": "^4.19.2",
     "typeorm": "^0.3.20"
   },
   "devDependencies": {

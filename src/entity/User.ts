@@ -1,28 +1,30 @@
-import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+// import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
 
-@Entity("Users")
-export class User {
-  @PrimaryGeneratedColumn("uuid")
-  id!: string;
+// @Entity("Users")
+// export class User {
+//   @PrimaryGeneratedColumn("uuid")
+//   id!: string;
 
-  @Column()
-  firstName!: string;
+//   @Column()
+//   firstName!: string;
 
-  @Column()
-  lastName!: string;
+//   @Column()
+//   lastName!: string;
 
-  @Column()
-  userName!: string;
+//   @Column()
+//   userName!: string;
 
-  @Column()
-  isActive!: boolean;
+//   @Column({
+//     default: true,
+//   })
+//   isActive!: boolean;
 
-  @CreateDateColumn()
-  createdAt!: Date;
+//   @CreateDateColumn()
+//   createdAt!: Date;
 
-  @UpdateDateColumn()
-  updatedAt!: Date;
-}
+//   @UpdateDateColumn()
+//   updatedAt!: Date;
+// }
 
 //Why "!""
 // The ! operator tells TypeScript that you are confident the property will be initialized (by TypeORM in this case), even though it 
@@ -34,3 +36,33 @@ export class User {
 //entitySkipConstructor: true
 //It indicates that TypeORM will skip constructors when deserializing entities from the database
 //https://github.com/typeorm/typeorm/issues/9111
+
+
+import { Entity, PrimaryGeneratedColumn, Column, CreateDateColumn, UpdateDateColumn } from "typeorm";
+
+@Entity("Users")
+export class User {
+  @PrimaryGeneratedColumn("uuid")
+  id!: string;
+
+  @Column({type: "varchar", length: 250})
+  firstName!: string;
+
+  @Column({type: "varchar", length: 250})
+  lastName!: string;
+
+  @Column({type: "varchar", length: 250})
+  userName!: string;
+
+  @Column({
+    default: true,
+    type:"boolean"
+  })
+  isActive!: boolean;
+
+  @CreateDateColumn({type: "date"})
+  createdAt!: Date;
+
+  @UpdateDateColumn({type: "date"})
+  updatedAt!: Date;
+}
