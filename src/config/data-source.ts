@@ -9,12 +9,15 @@ export const AppDataSource = new DataSource({
   port: 5432,
   username: process.env.DB_USERNAME,
   password: process.env.DB_PASSWORD,
-  database: "telegram-weather-bot",
+  database: process.env.DB_NAME,
   synchronize: false,
   logging: false,
-  entities: ["src/entity/*.ts"], // Path to entities.
-  migrations: ["src/migration/*.ts"], // Path to migrations.
-  subscribers: ["src/subscriber/*.ts"], // Path to subscribers.
+  // entities: ["src/entity/*.ts"], // Path to entities.
+  // migrations: ["src/migration/*.ts"], // Path to migrations.
+  // subscribers: ["src/subscriber/*.ts"], // Path to subscribers.
+  entities: [`${process.env.NODE_ENV == 'production' ? "dist" : "src"}/entity/*.ts`], // Path to entities.
+  migrations: [`${process.env.NODE_ENV == 'production' ? "dist" : "src"}/migration/*.ts`], // Path to migrations.
+  subscribers: [`${process.env.NODE_ENV == 'production' ? "dist" : "src"}/subscriber/*.ts`], // Path to subscribers.
 });
 
 
