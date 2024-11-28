@@ -10,9 +10,9 @@
     "dev": "nodemon src/index.ts",
     "build": "npx tsc --noEmit false",
     "typeorm": "npx typeorm-ts-node-commonjs",
-    "migration:run": "",
-    "migration:generate": "",
-    "migration:revert": ""
+    "migration:run": "npx typeorm-ts-node-commonjs migration:run -d ./src/config/data-source.ts",
+    "migration:generate": "npx typeorm-ts-node-commonjs migration:generate ./src/migration/%npm_config_migrationName% -d ./src/config/data-source.ts",
+    "migration:revert": "npx typeorm-ts-node-commonjs migration:revert -d ./src/config/data-source.ts"
   },
   "author": "",
   "license": "ISC",
