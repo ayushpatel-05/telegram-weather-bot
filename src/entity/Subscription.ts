@@ -61,5 +61,10 @@ export class Subscription {
 }
 
 /* 
+C:\Users\ayush\Desktop\Side Projects\Telegram Weather Bot(Assignment)\node_modules\typeorm\data-source\DataSource.js
+C:\Users\ayush\Desktop\Side Projects\Telegram Weather Bot(Assignment)\node_modules\typeorm\connection\ConnectionMetadataBuilder.js
+C:\Users\ayush\Desktop\Side Projects\Telegram Weather Bot(Assignment)\node_modules\typeorm\util\DirectoryExportedClassesLoader.js
+C:\Users\ayush\Desktop\Side Projects\Telegram Weather Bot(Assignment)\node_modules\typeorm\util\ApplyValueTransformers.js
+C:\Users\ayush\Desktop\Side Projects\Telegram Weather Bot(Assignment)\node_modules\typeorm\util\ImportUtils.js
 
 */
